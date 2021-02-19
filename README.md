@@ -24,17 +24,22 @@
 食用方法：
 安装g++，mysql，mysql-dev，
 创建数据库
+
+```JAVA
 create database vagrant;
 use vagrant;
 create table user(name char(50) NULL,passwd char(50) NULL,nick char(50) NULL);
 insert into user (name,passwd,nick) values ('fawkes','123456','laoli');
 exit;
+```
 
 然后在config.txt中正确填入mysql的用户名和密码，
 
+```JAVA
 make
 
 ./bin/server
+```
 
 在浏览器中访问
 
