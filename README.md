@@ -1,5 +1,5 @@
-# Vagrant-cpp-web-http
-For high performance server framework of cpp enthusiasts exchange learing
+# Vagrant
+一个简单的c++ web服务器框架，支持http请求的接收，解析，处理，再发送。旨在展示一个完整的服务器运行流程，供初学者学习。
 
 • 高并发（reactor 线程池）
 
@@ -7,11 +7,36 @@ For high performance server framework of cpp enthusiasts exchange learing
 
 • io多路复用（epoll et模式）
 
-• 零拷贝（sendfile mmap）
+• 零拷贝（mmap）
 
 • request和response类处理GET和POST
 
-• 内置一个高效的字符串系统()
+• 内置一个高效的字符串系统(引用计数)
 
 • 内置一颗红黑树（为了运行期无动态内存分配，自己用内存池实现了一颗红黑树）
+
+• RAII机制的mysql连接池
+
+
+
+例子实现了从前端发送用户名和密码的登陆流程，后端收到后核对，如果密码正确则返回该用户的昵称，否则返回error。(json格式)
+
+食用方法：
+安装g++，mysql，mysql-dev，
+创建数据库
+create database vagrant;
+use vagrant;
+create table user(name char(50) NULL,passwd char(50) NULL,nick char(50) NULL);
+insert into user (name,passwd,nick) values ('fawkes','123456','laoli');
+exit;
+
+然后在config.txt中正确填入mysql的用户名和密码，
+
+make
+
+./bin/server
+
+在浏览器中访问
+
+http://localhost:8652/index.html
 
