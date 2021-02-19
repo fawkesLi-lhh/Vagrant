@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .login {
+            width: 350px;
+            height: 230px;
+            background-color: rgba(0,0,0,.3);
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        p {
+            text-align: center;
+            margin: 12px auto;
+            color: #fff;
+        }
+        button {
+            width: 220px;
+            height: 30px;
+            background-color: skyblue;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 30px;
+            border: 0;
+        }
+        input {
+            height: 23px;
+        }
+    </style>
+</head>
+<body style="background-color: #1c77ac;">
+<div class="login">
+    <h3 style="text-align: center; color: #fff;">登录测试</h3>
+    <p>
+        账号：<input type="text" name="user" id="user">
+    </p>
+    <p>
+        密码：<input type="password" name="pwd" id="pwd">
+    </p>
+    <p>
+        <button type="button" id="btn">提交</button>
+    </p>
+</div>
+</body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script>
+    var btn = document.getElementById("btn");
+    var user = document.getElementById("user");
+    var pwd = document.getElementById("pwd");
+    btn.onclick = function() {
+        $.ajax({
+            url: "http://localhost:8652/login",
+            type: "POST",
+            data: {"name":user.value,"passward":pwd.value},
+            dataType: "json",
+            success: function(res) {
+                console.log(res);
+            }
+        });
+    }
+</script>
+</html>

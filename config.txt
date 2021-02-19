@@ -1,0 +1,5 @@
+port 8652
+max_user_count 66536
+database_user root
+database_passward yourPassward
+database_name vagrant
